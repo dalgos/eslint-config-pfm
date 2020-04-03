@@ -16,8 +16,9 @@ module.exports = {
   'plugins': [
     'react',
     'react-hooks',
-    '@typescript-eslint',
+    '@typescript-eslint/eslint-plugin',
     'jest',
+    'eslint-plugin-tsdoc'
   ],
   'extends': [
     'eslint:recommended',
@@ -75,7 +76,6 @@ module.exports = {
     'space-before-function-paren': ['error', { 'anonymous': 'always', 'named': 'never' }],
     'space-infix-ops': ['error'],
     'switch-colon-spacing': ['error', { 'after': true, 'before': false }],
-    'valid-jsdoc': ['warn', { 'requireReturn': false }],
     'react/jsx-uses-vars': "error",
     'react/jsx-curly-spacing': ['error', 'never'],
     'react/jsx-equals-spacing': ['error', 'never'],
@@ -93,5 +93,6 @@ module.exports = {
     'strict': 0,
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
+    'tsdoc/syntax': 'warn'
   }
 }
