@@ -89,7 +89,7 @@ module.exports = {
     'newline-per-chained-call': ['error', { 'ignoreChainWithDepth': 2 }],
     'no-alert': 0,
     'no-array-constructor': 'off',
-    'no-console': ['warn', { allow: ['error'] }],
+    'no-console': ['warn', { allow: ['error', 'warn'] }],
     'no-const-assign': 'error',
     'no-debugger': 'error',
     'no-dupe-class-members': 'off',
