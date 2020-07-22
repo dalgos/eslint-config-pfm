@@ -27,15 +27,60 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
   ],
   'rules': {
+    '@typescript-eslint/ban-types': [
+      'error',
+      {
+        extendDefaults: false,
+        types: {
+          String: {
+            message: 'Use `string` instead.',
+            fixWith: 'string'
+          },
+          Number: {
+            message: 'Use `number` instead.',
+            fixWith: 'number'
+          },
+          Boolean: {
+            message: 'Use `boolean` instead.',
+            fixWith: 'boolean'
+          },
+          Symbol: {
+            message: 'Use `symbol` instead.',
+            fixWith: 'symbol'
+          },
+          Object: {
+            message: 'The `Object` type is mostly the same as `unknown`. You probably want `Record<string, unknown>` instead. See https://github.com/typescript-eslint/typescript-eslint/pull/848',
+            fixWith: 'Record<string, unknown>'
+          },
+          '{}': {
+            message: 'The `{}` type is mostly the same as `unknown`. You probably want `Record<string, unknown>` instead.',
+            fixWith: 'Record<string, unknown>'
+          },
+          object: {
+            message: 'The `object` type is hard to use. Use `Record<string, unknown>` instead. See: https://github.com/typescript-eslint/typescript-eslint/pull/848',
+            fixWith: 'Record<string, unknown>'
+          },
+          Function: 'Use a specific function type instead, like `() => void`.',
+
+          // TODO: Try to enable this in 2021.
+          // null: {
+          // 	message: 'Use `undefined` instead. See: https://github.com/sindresorhus/meta/issues/7',
+          // 	fixWith: 'undefined'
+          // }
+
+          Omit: 'Prefer the `Except` type in the `type-fest` package instead as it\'s stricter.'
+        }
+      }
+    ],
     '@typescript-eslint/explicit-function-return-type': 'off',
     "eol-last": [2, "always"],
     // 'arrow-parens': ['error', 'as-needed', { requireForBlockBody: true }],
     'block-scoped-var': 'warn',
     'brace-style': ['error', '1tbs', { 'allowSingleLine': true }],
-    'camelcase': ['error', {'properties': 'always'}],
+    'camelcase': ['error', { 'properties': 'always' }],
     'comma-dangle': ['error', 'only-multiline'],
-    'comma-spacing': ['error', { 'before': false, 'after': true }],
     'comma-style': ['error', 'last'],
+    'comma-spacing': 'off',
     'curly': 'error',
     'eqeqeq': 'warn',
     'indent': ['error', 2, { 'SwitchCase': 1 }],
@@ -43,12 +88,14 @@ module.exports = {
     'keyword-spacing': ['error', { 'before': true, 'after': true }],
     'newline-per-chained-call': ['error', { 'ignoreChainWithDepth': 2 }],
     'no-alert': 'warn',
-    'no-array-constructor': 'error',
+    'no-array-constructor': 'off',
     'no-console': ['warn', { allow: ['error'] }],
     'no-const-assign': 'error',
     'no-debugger': 'error',
+    'no-dupe-class-members': 'off',
     'no-duplicate-imports': 'error',
     'no-empty': 'warn',
+    'no-empty-function': 'off',
     'no-inline-comments': 'warn',
     'no-loop-func': 'error',
     'no-multi-spaces': 'error',
@@ -63,7 +110,7 @@ module.exports = {
     'no-var': 'error',
     'object-curly-spacing': ['warn', 'always'],
     'object-shorthand': 'error',
-    'padding-line-between-statements': ['error', 
+    'padding-line-between-statements': ['error',
       { 'blankLine': 'always', 'prev': '*', 'next': 'return' },
       { 'blankLine': 'always', 'prev': ['const', 'let', 'var'], 'next': '*' },
       { 'blankLine': 'any', 'prev': ['const', 'let', 'var'], 'next': ['const', 'let', 'var'] },
@@ -93,6 +140,45 @@ module.exports = {
     'strict': 0,
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
-    'tsdoc/syntax': 'warn'
+    'tsdoc/syntax': 'warn',
+    '@typescript-eslint/comma-spacing': [
+      'error',
+      {
+        before: false,
+        after: true
+      }
+    ],
+    '@typescript-eslint/no-array-constructor': 'error',
+    '@typescript-eslint/no-dupe-class-members': 'error',
+    '@typescript-eslint/no-dynamic-delete': 'error',
+    '@typescript-eslint/no-empty-function': 'error',
+    '@typescript-eslint/no-empty-interface': [
+      'error',
+      {
+        allowSingleExtends: true
+      }
+    ],
+    '@typescript-eslint/no-extra-non-null-assertion': 'error',
+  },
+  'settings': {
+    'react': {
+      'version': 'detect'
+    },
+    'import/resolver': {
+      node: {
+        extensions: [
+          '.js',
+          '.jsx',
+          '.ts',
+          '.tsx'
+        ]
+      }
+    },
+    'import/parsers': {
+      '@typescript-eslint/parser': [
+        '.ts',
+        '.tsx'
+      ]
+    }
   }
-}
+};
