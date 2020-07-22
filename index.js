@@ -87,7 +87,7 @@ module.exports = {
     'jsx-quotes': ['error', 'prefer-double'],
     'keyword-spacing': ['error', { 'before': true, 'after': true }],
     'newline-per-chained-call': ['error', { 'ignoreChainWithDepth': 2 }],
-    'no-alert': 'warn',
+    'no-alert': 0,
     'no-array-constructor': 'off',
     'no-console': ['warn', { allow: ['error'] }],
     'no-const-assign': 'error',
